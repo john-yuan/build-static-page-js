@@ -1,0 +1,39 @@
+{
+  "name": "build-static-page",
+  "version": "0.0.1-alpha.3",
+  "description": "A tool to build static page.",
+  "main": "index.js",
+  "bin": {
+    "build-static-page": "bin/command.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/john-yuan/build-static-page.git"
+  },
+  "keywords": [
+    "build-static-page"
+  ],
+  "author": "John Yuan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/john-yuan/build-static-page/issues"
+  },
+  "homepage": "https://github.com/john-yuan/build-static-page#readme",
+  "dependencies": {
+    "autoprefixer": "^9.8.6",
+    "colors": "^1.4.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "filesize": "^6.1.0",
+    "fs-extra": "^9.0.1",
+    "jsdom": "^16.4.0",
+    "less": "^3.12.2",
+    "lodash": "^4.17.20",
+    "postcss": "^7.0.32",
+    "prettier": "^2.1.1",
+    "yargs": "^15.4.1"
+  }
+}

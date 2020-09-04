@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Index of <%= dirname -%></title>
+  <style>
+    h1 {
+      font-size: 24px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 16px;
+      font-family: Consolas, monospace;
+    }
+    td {
+      border-bottom: 1px solid #ccc;
+      line-height: 200%;
+    }
+    a {
+      text-decoration: none;
+    }
+    .size, .mtime {
+      white-space: nowrap;
+    }
+    footer {
+      margin-top: 1em;
+      line-height: 200%;
+      color: #4a4a4a;
+      font-size: 14px;
+      text-align: right;
+      cursor: default;
+    }
+    footer a {
+      color: #4a4a4a;
+      text-decoration: underline;
+    }
+    footer a:hover {
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+  <h1>Index of <%= dirname -%></h1>
+  <table>
+    <% for (var i = 0; i < files.length; ++i) { -%>
+      <tr>
+        <td class="url">
+          <a href="<%= files[i].url %>" title="<%= files[i].url %>">
+            <%= files[i].url %>
+          </a>
+        </td>
+        <td class="size"><%= files[i].size %></td>
+        <td class="mtime"><%= files[i].mtime %></td>
+      </tr>
+    <% } -%>
+  </table>
+  <footer>
+    <b>Served by build-static-page@<%= version %></b>
+    <span>-</span>
+    <b><a target="_blank" href="https://www.npmjs.com/package/build-static-page">NPM package</a></b>
+    <span>-</span>
+    <b><a target="_blank" href="<%= homepage %>">Home page</a></b>
+  </footer>
+</body>
+</html>

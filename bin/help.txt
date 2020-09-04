@@ -1,0 +1,18 @@
+usage:
+  build-static-page [options]
+
+examples:
+  build-static-page --serve
+  build-static-page --target=./dist
+  build-static-page --source=./src --serve
+  build-static-page --source=./src --target=./dist
+
+options:
+  --serve     Start development server
+  --source    Source code directory [./]
+  --target    Target directory for build result
+  --host      Server host to use [0.0.0.0]
+  --port      Server port to use [8080]
+  --mode      Set process.env.BUILD_STATIC_PAGE_MODE
+  --help      Print help
+  --version   Print version
