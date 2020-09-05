@@ -2,17 +2,21 @@ usage:
   build-static-page [options]
 
 examples:
+  build-static-page --init
+  build-static-page --build
   build-static-page --serve
-  build-static-page --target=./dist
-  build-static-page --source=./src --serve
-  build-static-page --source=./src --target=./dist
+  build-static-page --build --root=/path/to/your/project
 
 options:
+  --init      Initialize project
+  --build     Build static page
   --serve     Start development server
-  --source    Source code directory [./]
-  --target    Target directory for build result
-  --host      Server host to use [0.0.0.0]
-  --port      Server port to use [8080]
-  --mode      Set process.env.BUILD_STATIC_PAGE_MODE
+  --host      Server host to use      [0.0.0.0]
+  --port      Server port to use      [8080]
+  --root      Project root directory  [./]
+  --src       Project src directory   [{root}/www]
+  --dist      Project dist directory  [{root}/dist]
+  --config    Path to configuration   [{root}/build.static.page.config.js]
+  --mode      Set mode
   --help      Print help
   --version   Print version
