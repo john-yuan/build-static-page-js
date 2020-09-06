@@ -32,17 +32,17 @@ const initProject = require('./lib/initProject');
  * @param {BuildStaticPageOptions} options
  */
 function buildStaticPage(options) {
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     const parsedOptions = parseOptions(options);
 
     if (parsedOptions.init) {
-      return initProject(parsedOptions).then(resolve);
+      return initProject(parsedOptions).then(resolve).catch(reject);
     } else if (parsedOptions.build) {
       parsedOptions.mode = propOr('production', 'mode')(parsedOptions);
-      return buildStatic(parsedOptions).then(resolve);
+      return buildStatic(parsedOptions).then(resolve).catch(reject);
     } else if (parsedOptions.serve) {
       parsedOptions.mode = propOr('development', 'mode')(parsedOptions);
-      return serveStatic(parsedOptions).then(resolve);
+      return serveStatic(parsedOptions).then(resolve).catch(reject);
     } else if (parsedOptions.preview) {
       parsedOptions.mode = propOr('production', 'mode')(parsedOptions);
       return buildStaticPage({
@@ -53,8 +53,8 @@ function buildStaticPage(options) {
         return buildStaticPage({
           ...parsedOptions,
           serve: true
-        }).then(resolve);
-      });
+        });
+      }).then(resolve).catch(reject);
     } else if (parsedOptions.version) {
       console.log(package.version);
       resolve(package.version);
