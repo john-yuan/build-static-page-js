@@ -21,5 +21,8 @@ options:
   --help      Print help
   --version   Print version
 
-  Note: if src, dist, config are relative paths, they are relative to root,
-  not current working directory.
+  note:
+    1. if src, dist, config are relative paths, they are relative to root,
+       not current working directory.
+    2. if mode is not set, for --serve it will be default as development,
+       for --build, it will be default as production.
