@@ -20,3 +20,6 @@ options:
   --mode      Set mode
   --help      Print help
   --version   Print version
+
+  Note: if src, dist, config are relative paths, they are relative to root,
+  not current working directory.
