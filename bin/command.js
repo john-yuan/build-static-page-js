@@ -8,6 +8,7 @@ const options = pick([
   'init',
   'build',
   'serve',
+  'preview',
   'host',
   'port',
   'root',

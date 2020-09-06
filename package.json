@@ -9,8 +9,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "init": "node ./bin/command.js --root=example --init",
+    "build": "node ./bin/command.js --root=example --build",
     "serve": "node ./bin/command.js --root=example --serve",
-    "build": "node ./bin/command.js --root=example --build"
+    "preview": "node ./bin/command.js --root=example --preview"
   },
   "repository": {
     "type": "git",
@@ -27,6 +28,7 @@
   "homepage": "https://github.com/john-yuan/build-static-page#readme",
   "dependencies": {
     "autoprefixer": "^9.8.6",
+    "clean-css": "^4.2.3",
     "colors": "^1.4.0",
     "ejs": "^3.1.5",
     "express": "^4.17.1",

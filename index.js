@@ -14,6 +14,7 @@ const initProject = require('./lib/initProject');
  * @property {boolean} init Initialize project
  * @property {boolean} build Build static page
  * @property {boolean} serve Start development server
+ * @property {boolean} preview Build and start preview server
  * @property {string} [host=0.0.0.0] Server host to use
  * @property {number} [port=8080] Server port to use
  * @property {string} [root=./] Project root directory
@@ -34,24 +35,34 @@ function buildStaticPage(options) {
   return new Promise((resolve) => {
     const parsedOptions = parseOptions(options);
 
-    if (parseOptions) {
-      if (parsedOptions.init) {
-        return initProject(parsedOptions);
-      } else if (parsedOptions.build) {
-        parsedOptions.mode = propOr('production', 'mode')(parsedOptions);
-        return buildStatic(parsedOptions);
-      } else if (parsedOptions.serve) {
-        parsedOptions.mode = propOr('development', 'mode')(parsedOptions);
-        return serveStatic(parsedOptions);
-      } else if (parsedOptions.version) {
-        console.log(package.version);
-        resolve(package.version);
-      } else {
-        const helpFilePath = path.resolve(__dirname, './bin/help.txt');
-        const helpText = fse.readFileSync(helpFilePath).toString().trim();
-        console.log(helpText);
-        resolve(helpText);
-      }
+    if (parsedOptions.init) {
+      return initProject(parsedOptions).then(resolve);
+    } else if (parsedOptions.build) {
+      parsedOptions.mode = propOr('production', 'mode')(parsedOptions);
+      return buildStatic(parsedOptions).then(resolve);
+    } else if (parsedOptions.serve) {
+      parsedOptions.mode = propOr('development', 'mode')(parsedOptions);
+      return serveStatic(parsedOptions).then(resolve);
+    } else if (parsedOptions.preview) {
+      parsedOptions.mode = propOr('production', 'mode')(parsedOptions);
+      return buildStaticPage({
+        ...parsedOptions,
+        build: true
+      }).then(() => {
+        console.log('');
+        return buildStaticPage({
+          ...parsedOptions,
+          serve: true
+        }).then(resolve);
+      });
+    } else if (parsedOptions.version) {
+      console.log(package.version);
+      resolve(package.version);
+    } else {
+      const helpFilePath = path.resolve(__dirname, './bin/help.txt');
+      const helpText = fse.readFileSync(helpFilePath).toString().trim();
+      console.log(helpText);
+      resolve(helpText);
     }
   });
 }
