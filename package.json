@@ -34,11 +34,11 @@
     "express": "^4.17.1",
     "filesize": "^6.1.0",
     "fs-extra": "^9.0.1",
+    "js-beautify": "^1.13.0",
     "jsdom": "^16.4.0",
     "less": "^3.12.2",
     "lodash": "^4.17.20",
     "postcss": "^7.0.32",
-    "prettier": "^2.1.1",
     "uglify-js": "^3.10.3",
     "yargs": "^15.4.1"
   }
